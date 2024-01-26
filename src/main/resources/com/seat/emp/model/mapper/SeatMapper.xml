@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seat.emp.model.mapper.SeatMapper">
+
+    <resultMap id="officeFloorSeatDto" type="com.seat.emp.model.dto.OfficeFloorSeatDto">
+        <id column="office_id" jdbcType="INTEGER" property="officeId"/>
+        <result column="office_name" jdbcType="VARCHAR" property="officeName"/>
+        <result column="floor_no" jdbcType="TINYINT" property="floorNo"/>
+        <result column="seat_no" jdbcType="INTEGER" property="seatNo"/>
+        <result column="state" jdbcType="TINYINT" property="state"/>
+        <result column="count" jdbcType="INTEGER" property="count"/>
+    </resultMap>
+
+    <select id="getOfficeFloorInfo" statementType="CALLABLE" resultMap="officeFloorSeatDto">
+        {call GetOfficeFloorInfo(#{officeId, mode=IN, jdbcType=INTEGER}, #{floorNo, mode=IN, jdbcType=INTEGER})}
+    </select>
+</mapper>
