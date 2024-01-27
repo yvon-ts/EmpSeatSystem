@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.seat.emp.model.mapper.SeatMapper">
+<mapper namespace="com.seat.emp.model.mapper.OfficeFloorSeatMapper">
 
     <resultMap id="officeFloorSeatDto" type="com.seat.emp.model.dto.OfficeFloorSeatDto">
         <id column="office_id" jdbcType="INTEGER" property="officeId"/>
@@ -11,7 +11,7 @@
         <result column="count" jdbcType="INTEGER" property="count"/>
     </resultMap>
 
-    <select id="getOfficeFloorInfo" statementType="CALLABLE" resultMap="officeFloorSeatDto">
-        {call GetOfficeFloorInfo(#{officeId, mode=IN, jdbcType=INTEGER}, #{floorNo, mode=IN, jdbcType=INTEGER})}
+    <select id="getOfficeFloorSeat" statementType="CALLABLE" resultMap="officeFloorSeatDto">
+        {call get_office_floor_seat(#{officeId, mode=IN, jdbcType=INTEGER}, #{floorNo, mode=IN, jdbcType=INTEGER})}
     </select>
 </mapper>

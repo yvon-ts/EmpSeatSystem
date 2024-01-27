@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seat.emp.model.mapper.DeptMapper">
+
+    <resultMap id="deptDto" type="com.seat.emp.model.dto.DeptDto">
+        <id column="dept_id" jdbcType="INTEGER" property="deptId"/>
+        <result column="dept_name" jdbcType="VARCHAR" property="deptName"/>
+        <result column="emp_id" jdbcType="INTEGER" property="empId"/>
+        <result column="emp_name" jdbcType="VARCHAR" property="empName"/>
+    </resultMap>
+
+    <select id="getDeptInfo" statementType="CALLABLE" resultMap="deptDto">
+        {call get_dept_info(#{deptId, mode=IN, jdbcType=INTEGER})}
+    </select>
+</mapper>
