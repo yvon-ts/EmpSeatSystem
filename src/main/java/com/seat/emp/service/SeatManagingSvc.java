@@ -5,7 +5,7 @@ import com.seat.emp.model.dto.DeptDto;
 
 import java.util.List;
 
-public interface OfficeSeatSvc {
+public interface SeatManagingSvc {
     List<OfficeFloorSeatDto> getOffices();
 
     List<OfficeFloorSeatDto> getFloorsByOffice(Integer officeId);
@@ -15,4 +15,6 @@ public interface OfficeSeatSvc {
     List<DeptDto> getDepts();
 
     List<DeptDto> getEmpsByDept(Integer deptId);
+
+    void updateEmpSeat(Integer flagChange, Integer floorSeatSeq, Integer empId);
 }

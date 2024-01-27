@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.seat.emp.model.mapper.OfficeFloorSeatMapper">
+<mapper namespace="com.seat.emp.model.mapper.SeatManagingMapper">
 
     <resultMap id="officeFloorSeatDto" type="com.seat.emp.model.dto.OfficeFloorSeatDto">
         <id column="office_id" jdbcType="INTEGER" property="officeId"/>
@@ -9,9 +9,23 @@
         <result column="seat_no" jdbcType="INTEGER" property="seatNo"/>
         <result column="state" jdbcType="TINYINT" property="state"/>
         <result column="count" jdbcType="INTEGER" property="count"/>
+        <result column="floor_seat_seq" jdbcType="INTEGER" property="floorSeatSeq"/>
+        <result column="emp_id" jdbcType="INTEGER" property="empId"/>
+        <result column="emp_name" jdbcType="VARCHAR" property="empName"/>
+        <result column="dept_id" jdbcType="INTEGER" property="deptId"/>
+        <result column="dept_name" jdbcType="VARCHAR" property="deptName"/>
     </resultMap>
 
     <select id="getOfficeFloorSeat" statementType="CALLABLE" resultMap="officeFloorSeatDto">
         {call get_office_floor_seat(#{officeId, mode=IN, jdbcType=INTEGER}, #{floorNo, mode=IN, jdbcType=INTEGER})}
     </select>
+
+    <update id="updateEmpSeat" statementType="CALLABLE">
+        {call update_emp_seat(
+            #{flagChange, mode=IN, jdbcType=INTEGER},
+            #{floorSeatSeq, mode=IN, jdbcType=INTEGER},
+            #{empId, mode=IN, jdbcType=INTEGER}
+            )
+        }
+    </update>
 </mapper>
