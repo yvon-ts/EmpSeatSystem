@@ -7,9 +7,10 @@
         <result column="dept_name" jdbcType="VARCHAR" property="deptName"/>
         <result column="emp_id" jdbcType="INTEGER" property="empId"/>
         <result column="emp_name" jdbcType="VARCHAR" property="empName"/>
+        <result column="floor_seat_seq" jdbcType="INTEGER" property="floorSeatSeq"/>
     </resultMap>
 
     <select id="getDeptInfo" statementType="CALLABLE" resultMap="deptDto">
-        {call get_dept_info(#{deptId, mode=IN, jdbcType=INTEGER})}
+        {call get_dept_emp(#{deptId, mode=IN, jdbcType=INTEGER}, #{empId, mode=IN, jdbcType=INTEGER})}
     </select>
 </mapper>

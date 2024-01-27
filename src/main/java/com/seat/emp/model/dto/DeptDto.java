@@ -12,4 +12,6 @@ public class DeptDto {
     private Integer empId;
 
     private String empName;
+
+    private Integer floorSeatSeq;
 }

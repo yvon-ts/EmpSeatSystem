@@ -4,7 +4,7 @@ import com.seat.emp.common.enums.ExceptionEnum;
 import lombok.Data;
 
 @Data
-public class Result<T> { // TODO: 有移除Serializable
+public class Result<T> {
     private Integer code;
 
     private String msg;
